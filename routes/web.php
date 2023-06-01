@@ -9,6 +9,11 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('layouts/add', function () {
+    return view('layouts.add');
+})->name('layouts.add');
+
+
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

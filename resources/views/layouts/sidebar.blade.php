@@ -5,7 +5,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Team Anxiety   <sup>2</sup></div>
             </a>
 
             <!-- Divider -->
@@ -46,16 +46,16 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
+                    <i class="fas fa-fw fa-list-ol"></i>
+                    <span>Order list</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
+                        <h6 class="collapse-header">Ordering list:</h6>
+                        <a class="collapse-item" href="{{ route('layouts.add')}}">Upload</a>
+                        <a class="collapse-item" href="utilities-border.html">Pending</a>
+                        <a class="collapse-item" href="utilities-animation.html">Shipping</a>
                         <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                 </div>

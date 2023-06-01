@@ -70,8 +70,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div class="form-label">Place of Birth</div>
-                                    <input type="" wire:model="PlaceofBirth" class="form-control">
-                                    @error('PlaceofBirth')
+                                    <input type="" wire:model="PlaceOfBirth" class="form-control">
+                                    @error('PlaceOfBirth')
                                         <span class="text-danger" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -90,6 +90,24 @@
                 </div>
  
                 <hr>
+                
+                <!-- search bar -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <i class="fas fa-table me-1"></i>
+                                Residents List
+                            </div>
+                            <div>
+                                <input type="text" wire:model="searchTerm" placeholder="Search..." class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                <!-- search bar end-->
+
+                <!-- Livewire component end -->
+
                 <table class="table">
                     <thead>
                         <th>QRcode</th>
@@ -103,30 +121,33 @@
                         <th>Action</th>
                     </thead>
                     <tbody>
-                        @if(isset($list))
-                            @foreach($list as $c)
+                            @foreach($residents as $resident)
                                 <tr>
-                                    <td>{!! QrCode::size(30)->generate($c->FirstName)!!}</td>
-                                    <td>{{ $c->FirstName }}</td>
-                                    <td>{{ $c->MiddleName }}</td>
-                                    <td>{{ $c->LastName }}</td>
-                                    <td>{{ $c->Suffix }}</td>
-                                    <td>{{ $c->DOB }}</td>
-                                    <td>{{ $c->PlaceofBirth }}</td>
-                                    <td>{{ $c->CivilStatus }}</td>
+                                    <td>{!! QrCode::size(40)->generate($resident->FirstName . ' ' . $resident->MiddleName . ' ' . $resident->LastName )!!}</td>
+                                    <td>{{ $resident->FirstName }}</td>
+                                    <td>{{ $resident->MiddleName }}</td>
+                                    <td>{{ $resident->LastName }}</td>
+                                    <td>{{ $resident->Suffix }}</td>
+                                    <td>{{ $resident->DOB }}</td>
+                                    <td>{{ $resident->PlaceOfBirth }}</td>
+                                    <td>{{ $resident->CivilStatus }}</td>
                                     <td>
                                         <button class="btn btn-info btn-sm"
-                                        wire:click="update('{{ $c->id }}')">
+                                        wire:click="update('{{ $resident->id }}')">
                                         Edit</button>
 
                                         <button class="btn btn-danger btn-sm"
-                                        wire:click="delete('{{ $c->id }}')">
+                                        wire:click="delete('{{ $resident->id }}')">
                                         Delete</button>
                                     </td>
                                 </tr>
                             @endforeach
-                        @endif
                     </tbody>
                 </table>
+
+                {{ $residents->links() }}
+
+                <div>
+                </div>
                 </hr>
 </div>
